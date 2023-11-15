@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row vh-100 align-items-center ps-4 pe-4">
+        <div class="container border border-primary rounded-4">
+            <div class="titulo pt-4 pb-5">
+                <h3 class="text-center">Log in</h3>
+            </div>
+            <form (ngSubmit)="onLogin()" [formGroup]="loginForm">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Email</label>
+                    <input type="text" formControlName="email" class="form-control" id="exampleFormControlInput1">
+                    <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['required']"
+                        class="alert alert-danger mt-2" role="alert">Email required</div>
+                    <div *ngIf="loginForm.get('email')?.touched && !loginForm.get('email')?.errors?.['required'] && 
+                loginForm.get('email')?.errors?.['email']" class="alert alert-danger mt-2" role="alert">Invalid email
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput2" class="form-label">Password</label>
+                    <input type="password" formControlName="password" class="form-control"
+                        id="exampleFormControlInput2">
+                    <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['required']"
+                        class="alert alert-danger mt-2" role="alert">Password required</div>
+                </div>
+                <div class="boton text-center mb-4 d-grid gap-2 col-3 mx-auto">
+                    <button type="submit" class="btn btn-primary">Log in</button>
+                    <button (click)="onGuest()" class="btn btn-primary">Guest</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
